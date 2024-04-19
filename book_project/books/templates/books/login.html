@@ -1,0 +1,13 @@
+<h1>Login</h1>
+
+<form action="/login" method="post">
+{% csrf_token %}
+  <input type="text" name="username" id="username" value="">
+  <input type="password" name="password" id="password" value="">
+  <input type="submit" value="Login">
+</form>
+
+{% if error %}
+  <p> {{ error }}</p>
+{% endif %}
+<p>Not registered yet?</p> <a href="/polls/register">Register Now</a>
