@@ -1,4 +1,39 @@
-<h1>Forums</h1>
-{% for review in latest_reviews %}
- <img src='{{ review.photo.url }}' alt="Failed to load image" height=400 width=400>
-{% endfor %}
+<!--<h1>Forums</h1>-->
+<!--{% for review in latest_reviews %}-->
+<!-- <img src='{{ review.photo.url }}' alt="Failed to load image" height=400 width=400>-->
+<!--{% endfor %}-->
+
+<!-- forum.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forum</title>
+    <style>
+        .review-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .review-image {
+            width: 200px; /* Set width of image */
+            margin-right: 20px; /* Add margin between image and text */
+        }
+        .review-content {
+            flex: 1; /* Make text fill remaining space */
+        }
+    </style>
+</head>
+<body>
+    <h1>Forum</h1>
+    {% for review in latest_reviews %}
+    <div class="review-container">
+        <img src='{{ review.photo.url }}' alt="Review Image" class="review-image">
+        <div class="review-content">
+            <h2>{{ review.title }}</h2>
+            <p>{{ review.description }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>

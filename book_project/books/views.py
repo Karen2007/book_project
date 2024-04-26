@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect
 from .models import Review
+from .forms import ReviewForm
 
 # Create your views here.
 def home(request):
@@ -41,5 +42,13 @@ def forum(request):
     context = {'latest_reviews' : latest_reviews}
     return render(request, 'books/forum.html', context)
 
+
 def add_review(request):
-    pass
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('forum')  # Redirect to the forum page after successful review submission
+    else:
+        form = ReviewForm()
+    return render(request, 'books/add_review.html', {'form' : form})
