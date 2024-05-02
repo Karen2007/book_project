@@ -1,4 +1,77 @@
-<h1>Forums</h1>
-{% for review in latest_reviews %}
- <img src='{{ review.photo.url }}' alt="Failed to load image" height=400 width=400>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Reviews Forum</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2; /* Background color */
+            color: #333; /* Text color */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .review {
+            background-color: #fff; /* Review background color */
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd; /* Border color */
+            overflow: hidden;
+            transition: box-shadow 0.3s ease-in-out; /* Smooth box-shadow transition */
+        }
+
+        .review:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+        }
+
+        .review-img {
+            width: 100px; /* Adjust as needed */
+            height: auto;
+            float: left;
+            margin-right: 20px;
+            border-radius: 5px; /* Rounded corners for image */
+        }
+
+        .review-info {
+            padding: 20px;
+        }
+
+        .review h2 {
+            margin-bottom: 10px;
+            color: #333; /* Title color */
+        }
+
+        .review p {
+            margin-bottom: 15px;
+            color: #666; /* Description color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Django template loop to display reviews -->
+        {% for review in reviews %}
+        <div class="review">
+            <img src="{{ review.photo.url }}" alt="Book Cover" class="review-img">
+            <div class="review-info">
+                <h2>{{ review.title }}</h2>
+                <p>{{ review.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
