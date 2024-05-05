@@ -1,3 +1,120 @@
-<div align="center">
-    <h1>Welcome to my book project</h1>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookLook</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(242, 242, 242, 0.8); /* Background color with reduced opacity */
+            color: #333;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210216/pngtree-trendy-abstract-fluid-background-art-template-with-doodle-pattern-and-geometric-image_562170.jpg');
+            background-size: cover;
+            background-position: center top;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center; /* Center align content */
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            font-size: 24px;
+            color: #fff;
+            margin: 0;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            background-color: #8B4513;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #A0522D;
+        }
+
+        .description {
+            margin-top: 150px; /* Increase the margin-top for separation */
+        }
+
+        .welcome-text {
+            font-size: 32px; /* Larger font size for welcome text */
+            color: #000; /* Darker color for welcome text */
+            margin-bottom: 20px; /* Add some space below the welcome text */
+            text-align: center; /* Center the text horizontally */
+        }
+
+        .main-text {
+            font-size: 18px; /* Decrease font size for main text */
+            line-height: 1.6; /* Increase line height for better readability */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar h1 {
+                margin-bottom: 10px;
+            }
+
+            .navbar a {
+                margin: 10px 0;
+            }
+
+            .description {
+                margin-top: 200px; /* Increase margin-top for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>BookLook</h1>
+        <div>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="description">
+            <div class="welcome-text">Welcome to BookLook</div>
+            <div class="main-text">
+                BookLook is a community where you can share reviews about books that you have read.
+                Register or login to join our community!
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

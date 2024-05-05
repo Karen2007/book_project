@@ -1,4 +1,108 @@
-<h1>Forums</h1>
-{% for review in latest_reviews %}
- <img src='{{ review.photo.url }}' alt="Failed to load image" height=400 width=400>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2; /* Background color */
+            color: #333; /* Text color */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .review {
+            background-color: #fff; /* Review background color */
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd; /* Border color */
+            overflow: hidden;
+            transition: box-shadow 0.3s ease-in-out; /* Smooth box-shadow transition */
+        }
+
+        .review:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+        }
+
+        .review-img {
+            width: 100px; /* Adjust as needed */
+            height: auto;
+            float: left;
+            border-top-left-radius: 10px; /* Rounded corners for top-left */
+            border-bottom-left-radius: 10px; /* Rounded corners for bottom-left */
+        }
+
+        .review-info {
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .review h2 {
+            margin-bottom: 10px;
+            color: #333; /* Title color */
+        }
+
+        .review p {
+            margin-bottom: 15px;
+            color: #666; /* Description color */
+        }
+
+        .comment-form {
+            margin-top: 20px;
+        }
+
+        .comment-form textarea {
+            width: calc(100% - 20px); /* Adjust to make space for the button */
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comment-form button {
+            float: right;
+            padding: 10px 20px;
+            background-color: #007bff; /* Button background color */
+            color: #fff; /* Button text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+        }
+
+        .comment-form button:hover {
+            background-color: #0056b3; /* Darker background color on hover */
+        }
+    </style>
+</head>
+<body>
+{% for review in reviews %}
+<div class="review" id="review-{{ review.id }}">
+    <img src="{{ review.photo.url }}" alt="Book Cover" class="review-img">
+    <div class="review-info">
+        <h2>{{ review.title }}</h2>
+        <p>{{ review.description }}</p>
+
+        <form class="comment-form" method="post" action="{% url 'add_comment' %}">
+            {% csrf_token %}
+            <input type="hidden" name="review_id" value="{{ review.id }}">
+            <textarea name="comment_text" rows="4" placeholder="Add a comment..."></textarea>
+            <button type="submit">Post Comment</button>
+            <a href="{% url 'comments' review.id %}" class="comments-link">Comments</a>
+        </form>
+    </div>
+</div>
 {% endfor %}
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .review-info {
+            margin-bottom: 20px;
+        }
+
+        .review-img {
+            width: 100px;
+            height: auto;
+            border-radius: 5px;
+            margin-right: 20px;
+            float: left;
+        }
+
+        p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .comments {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .comment {
+            margin-bottom: 10px;
+        }
+
+        .comment-text {
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+
+        .comment-date {
+            color: #999;
+            font-size: 12px;
+        }
+
+        .no-comments {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ review.title }}</h1>
+        <div class="review-info">
+            <img src="{{ review.photo.url }}" alt="Book Cover" class="review-img">
+            <p>{{ review.description }}</p>
+        </div>
+
+        <h2>Comments</h2>
+        <div class="comments">
+            {% if comments %}
+                <ul>
+                    {% for comment in comments %}
+                        <li class="comment">
+                            <p class="comment-text">{{ comment.comment_text }}</p>
+                            <p class="comment-date">Posted on: {{ comment.pub_date }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-comments">No comments yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
